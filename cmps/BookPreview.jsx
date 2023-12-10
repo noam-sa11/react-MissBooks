@@ -1,16 +1,37 @@
 
+export function BookPreview({ book, idx }) {
     const readingType = getReadingType(book.pageCount)
     const bookType = getBookType(book.publishedDate)
     const dynColor = getColorBasedOnPrice(book.listPrice.amount)
     const currSymbol = getCurrencySymbol(book.listPrice.currencyCode)
+    const isOnSale = (book.listPrice.isOnSale) ? true : false
+
     return (
         <article className="book-preview">
-            <h2>book Title: {book.title}</h2>
-            <h4>book Price: {book.price}</h4>
-            <img src={`../assets/img/${book.idx}.jpg`} alt="" />
+            <h2>
+                book Title: {book.title}
+                <span className="book-lang">{` (${book.language})`}</span>
+            </h2>
+            <h3>SubTitle: {book.subtitle}</h3>
+            <h4>Author: {book.authors[0]}</h4>
+            <h5>
+                Publish Year: {book.publishedDate}
+                {bookType && <span className="book-type">{` (${bookType})`}</span>}
+            </h5>
+            <p>{book.description}</p>
+            <h6>
+                Page Count: {book.pageCount}
+                <span className="reading-type">{` (${readingType})`}</span>
+            </h6>
+            <h4>book Price: <span className={dynColor}>{currSymbol}{book.listPrice.amount}</span></h4>
+            <div>
+                {isOnSale && <span className="book-sale">SALE</span>}
+                <img src={`../assets/img/${idx + 1}.jpg`} alt="" />
+            </div>
         </article>
     )
 }
+
 function getReadingType(pageCount) {
     if (pageCount > 500) {
         return 'Serious Reading'
