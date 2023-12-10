@@ -31,11 +31,11 @@
     font-size: 0.8rem;
 }
 
-.book-preview .book-sale{
+.book-preview div{
     position: relative;
 }
 
-.book-preview .book-sale span {
+.book-preview .book-sale{
     position: absolute;
     top: 50%;
     left: 50%;

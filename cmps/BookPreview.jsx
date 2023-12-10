@@ -8,13 +8,17 @@ export function BookPreview({ book }) {
         imgTitle = 'default'
     }
 
+    const isOnSale = (book.listPrice.isOnSale) ? true : false
     const currSymbol = getCurrencySymbol(book.listPrice.currencyCode)
 
     return (
         <article className="book-preview">
             <h2>book Title: {book.title}</h2>
             <h4>book Price: {currSymbol}{book.listPrice.amount}</h4>
-            <img src={`../assets/img/${imgTitle}.jpg`} alt="" />
+            <div>
+                {isOnSale && <span className="book-sale">SALE</span>}
+                <img src={`../assets/img/${imgTitle}.jpg`} alt="" />
+            </div>
         </article>
     )
 }

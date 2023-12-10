@@ -18,12 +18,21 @@ export function BookDetails({ bookId, onBack }) {
     const dynColor = getColorBasedOnPrice(book.listPrice.amount)
     const currSymbol = getCurrencySymbol(book.listPrice.currencyCode)
     const isOnSale = (book.listPrice.isOnSale) ? true : false
-    const lastPartOfUrl = book.thumbnail.split("/").pop()
-    const imgNumber = lastPartOfUrl.replace(".jpg", "")
+
+    let imgTitle
+    if (book.thumbnail) {
+        const lastPartOfUrl = book.thumbnail.split("/").pop()
+        imgTitle = lastPartOfUrl.replace(".jpg", "")
+    } else {
+        imgTitle = 'default'
+    }
 
     return (
         <section className="book-details">
-
+            <div>
+                {isOnSale && <span className="book-sale">SALE</span>}
+                <img src={`../assets/img/${imgTitle}.jpg`} alt="" />
+            </div>
             <h2>
                 book Title: {book.title}
                 <span className="book-lang">{` (${book.language})`}</span>
@@ -35,21 +44,21 @@ export function BookDetails({ bookId, onBack }) {
                 {bookType && <span className="book-type">{` (${bookType})`}</span>}
             </h5>
             <div className="book-categories">
+                Categories:
                 {book.categories.map((category) => (
-                    <span key={`${book.id}-${category}`}>{`${category} `}</span>
+                    <span key={`${book.id}-${category}`}>{` ${category} `}</span>
                 ))}
             </div>
-            <LongTxt txt={book.description} length={100} />
+            <div>
+                <LongTxt txt={book.description} length={100} />
+            </div>
             {/* <p>{book.description}</p> */}
             <h6>
                 Page Count: {book.pageCount}
                 <span className="reading-type">{` (${readingType})`}</span>
             </h6>
             <h4>book Price: <span className={dynColor}>{currSymbol}{book.listPrice.amount}</span></h4>
-            <div>
-                {isOnSale && <span className="book-sale">SALE</span>}
-                <img src={`../assets/img/${imgNumber}.jpg`} alt="" />
-            </div>
+
 
             <button onClick={onBack}>Back</button>
         </section>
