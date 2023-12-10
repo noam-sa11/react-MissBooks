@@ -22,13 +22,18 @@ h6 {
 
 p {
   margin: 0 0 1em;
+  font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
 a {
   text-decoration: none;
   color: unset;
+  font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
+label, button {
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+}
 
 
 /* Dont stretch my Media */

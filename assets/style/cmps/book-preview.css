@@ -14,3 +14,34 @@
 .book-preview img {
     max-width: 100px;
 }
+
+.book-preview h4.red {
+    color: red;
+}
+
+.book-preview h4 span.red {
+    color: red;
+}
+
+.book-preview h4 span.green {
+    color: green;
+}
+
+.book-preview .book-lang {
+    font-size: 0.8rem;
+}
+
+.book-preview div{
+    position: relative;
+}
+
+.book-preview div span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5) rotate(-20deg);
+    background-color: rgba(245, 245, 245, 0.749);
+    color: green;
+    text-decoration: underline;
+    font-weight: 600;
+}
