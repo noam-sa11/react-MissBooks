@@ -1,6 +1,6 @@
 import { BookPreview } from "./BookPreview.jsx"
 
-export function BookList({ books, onRemoveBook, onSelectBookId }) {
+export function BookList({ books, onRemoveBook, onSelectBookId, onEditSelectedBook }) {
     return (
         <ul className="book-list">
             {books.map(book =>
