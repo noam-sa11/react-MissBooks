@@ -45,3 +45,12 @@ function getColorBasedOnPrice(price) {
     }
 }
 
+function getCurrencySymbol(currencyCode) {
+    const currencySymbols = {
+        'USD': '$',
+        'EUR': '€',
+        'ILS': '₪'
+    }
+
+    return currencySymbols[currencyCode] || 'Unknown'
+}
