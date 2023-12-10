@@ -79,7 +79,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/20.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/1.jpg",
                 "language": "en",
                 "listPrice": {
                     "amount": 109,
@@ -101,7 +101,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/14.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/2.jpg",
                 "language": "sp",
                 "listPrice": {
                     "amount": 44,
@@ -123,7 +123,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/2.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/3.jpg",
                 "language": "he",
                 "listPrice": {
                     "amount": 108,
@@ -145,7 +145,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/16.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/4.jpg",
                 "language": "en",
                 "listPrice": {
                     "amount": 30,
@@ -167,7 +167,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/12.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/5.jpg",
                 "language": "sp",
                 "listPrice": {
                     "amount": 19,
@@ -189,7 +189,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/1.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/6.jpg",
                 "language": "en",
                 "listPrice": {
                     "amount": 91,
@@ -211,7 +211,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/14.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/7.jpg",
                 "language": "he",
                 "listPrice": {
                     "amount": 90,
@@ -233,7 +233,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/11.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/8.jpg",
                 "language": "he",
                 "listPrice": {
                     "amount": 176,
@@ -255,7 +255,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/10.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/9.jpg",
                 "language": "sp",
                 "listPrice": {
                     "amount": 116,
@@ -277,7 +277,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/5.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/10.jpg",
                 "language": "en",
                 "listPrice": {
                     "amount": 145,
@@ -299,7 +299,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/16.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/11.jpg",
                 "language": "sp",
                 "listPrice": {
                     "amount": 157,
@@ -321,7 +321,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/17.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/12.jpg",
                 "language": "sp",
                 "listPrice": {
                     "amount": 57,
@@ -343,7 +343,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/8.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/13.jpg",
                 "language": "en",
                 "listPrice": {
                     "amount": 167,
@@ -365,7 +365,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/3.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/14.jpg",
                 "language": "he",
                 "listPrice": {
                     "amount": 150,
@@ -387,7 +387,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/6.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/15.jpg",
                 "language": "en",
                 "listPrice": {
                     "amount": 58,
@@ -409,7 +409,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/7.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/16.jpg",
                 "language": "en",
                 "listPrice": {
                     "amount": 78,
@@ -431,7 +431,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/10.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/17.jpg",
                 "language": "en",
                 "listPrice": {
                     "amount": 118,
@@ -453,7 +453,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/12.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/18.jpg",
                 "language": "he",
                 "listPrice": {
                     "amount": 60,
@@ -475,7 +475,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/20.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/19.jpg",
                 "language": "he",
                 "listPrice": {
                     "amount": 110,
@@ -497,7 +497,7 @@ function _createBooks() {
                     "Computers",
                     "Hack"
                 ],
-                "thumbnail": "http://coding-academy.org/books-photos/2.jpg",
+                "thumbnail": "http://coding-academy.org/books-photos/20.jpg",
                 "language": "sp",
                 "listPrice": {
                     "amount": 186,
