@@ -20,3 +20,16 @@ function getReadingType(pageCount) {
         return 'Average Reading'
     }
 }
+
+function getBookType(publishedDate) {
+    const yearDiff = new Date().getFullYear() - publishedDate
+
+    if (yearDiff > 10) {
+        return 'Vintage'
+    } else if (yearDiff < 1) {
+        return 'New'
+    } else {
+        return ''
+    }
+}
+
