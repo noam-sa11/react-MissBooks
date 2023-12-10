@@ -68,8 +68,10 @@ export function BookIndex() {
                 </React.Fragment>
             }
             {selectedBookId && 
-                <BookDetails onBack={() => 
-                    setSelectedBookId(null)} bookId={selectedBookId} />
+                <BookDetails 
+                    bookId={selectedBookId}
+                    onBack={() => setSelectedBookId(null)}  
+                />
             }
             {showBookEdit &&    
                 <BookEdit onAddBook={handleAddBook} />
