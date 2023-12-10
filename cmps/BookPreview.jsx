@@ -1,6 +1,8 @@
 
     const readingType = getReadingType(book.pageCount)
     const bookType = getBookType(book.publishedDate)
+    const dynColor = getColorBasedOnPrice(book.listPrice.amount)
+    const currSymbol = getCurrencySymbol(book.listPrice.currencyCode)
     return (
         <article className="book-preview">
             <h2>book Title: {book.title}</h2>
@@ -30,6 +32,16 @@ function getBookType(publishedDate) {
         return 'New'
     } else {
         return ''
+    }
+}
+
+function getColorBasedOnPrice(price) {
+    if (price > 150) {
+        return 'red'
+    } else if (price < 20) {
+        return 'green'
+    } else {
+        return 'black'
     }
 }
 
