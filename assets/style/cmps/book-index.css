@@ -1,0 +1,9 @@
+.book-index {
+    display: grid;
+}
+
+.book-index .btn-add-book {
+    margin: 0 0 0 0;
+    justify-self: center;
+    align-self: center;
+}

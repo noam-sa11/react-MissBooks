@@ -11,7 +11,7 @@ export function App() {
         <section className="app main-layout">
             <header className="app-header full main-layout">
                 <section>
-                    <h1>React MissBooks App</h1>
+                    <h1>MissBooks</h1>
                     <nav className="app-nav">
                         <a onClick={() => setPage('home')} href="#">Home</a>
                         <a onClick={() => setPage('about')} href="#">About</a>

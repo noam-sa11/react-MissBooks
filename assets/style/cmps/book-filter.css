@@ -1,8 +1,14 @@
 .book-filter {
     background-color: var(--clr2bg);
+    padding: 10px;
+    margin-block-end: 15px;
 }
 
 .book-filter form {
-    display: grid;
-    grid-template-columns: 100px 200px;
+    display: flex;
+}
+
+.book-filter form>* {
+    margin-inline-end: 15px;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
 }
