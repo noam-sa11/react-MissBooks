@@ -45,7 +45,22 @@ function save(book) {
 }
 
 function getEmptyBook(title = '', price = 0) {
-    return { id: '', title, price }
+    return {
+        title,
+        subtitle: utilService.makeLorem(3),
+        authors: [utilService.makeLorem(2)],
+        publishedDate: 2023,
+        description: utilService.makeLorem(20),
+        pageCount: utilService.getRandomIntInclusive(50, 1000),
+        categories: ['Computers', 'Hack'],
+        thumbnail: '',
+        language: 'en',
+        listPrice: {
+            amount: price,
+            currencyCode: 'USD',
+            isOnSale: false,
+        },
+    }
 }
 
 function getDefaultFilter() {

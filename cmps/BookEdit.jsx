@@ -1,12 +1,39 @@
 import { bookService } from '../services/book.service.js'
 const { useState } = React
 
-export function BookEdit({ onAddBook }) {
-    const [newBook, setNewBook] = useState({ title: '', price: '' })
+export function BookEdit({ onAddBook, onCancelNewBook }) {
+    const emptyBook = bookService.getEmptyBook()
+    const [newBook, setNewBook] = useState(emptyBook)
+
 
     const handleInputChange = (event) => {
-        const { name, value } = event.target
-        setNewBook((prevBook) => ({ ...prevBook, [name]: value }))
+        const field = event.target.name
+        let { value } = event.target
+
+        switch (event.target.type) {
+            case 'number':
+            case 'range':
+                value = +value
+                break;
+
+            case 'checkbox':
+                value = event.target.checked
+                break
+
+            default:
+                break;
+        }
+
+        setNewBook((prevBook) => ({
+            ...prevBook, [field]:
+                (field === 'listPrice') ?
+                    {
+                        amount: value,
+                        currencyCode: 'USD',
+                        isOnSale: false,
+                    }
+                    : value
+        }))
     }
 
     const handleAddBook = (event) => {
@@ -14,7 +41,7 @@ export function BookEdit({ onAddBook }) {
         bookService.save(newBook)
             .then(() => {
                 onAddBook()
-                setNewBook({ title: '', price: 0 })
+                setNewBook(emptyBook)
             })
             .catch((error) => console.error('Error adding book:', error))
     }
@@ -35,13 +62,14 @@ export function BookEdit({ onAddBook }) {
             <input
                 type="number"
                 id="price"
-                name="price"
-                value={newBook.price}
+                name="listPrice"
+                value={newBook.listPrice.amount || ''}
                 onChange={handleInputChange}
                 required
             />
 
             <button type="submit">Add Book</button>
+            <button className="btn-cancel" onClick={onCancelNewBook}>X</button>
         </form>
     )
 }

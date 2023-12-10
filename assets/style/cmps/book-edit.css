@@ -23,3 +23,9 @@
     justify-self: center;
     margin-block-start: 15px;
 }
+
+.book-edit .btn-cancel {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

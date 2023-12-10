@@ -51,6 +51,9 @@ export function BookIndex() {
         setShowBookEdit(false)
     }
 
+    function onCancelNewBook() {
+        setShowBookEdit(false)
+    }
 
     if (!books) return <div>Loading...</div>
     return (
@@ -59,7 +62,7 @@ export function BookIndex() {
                 <React.Fragment>
                     <h1>Welcome to Book index!</h1>
                     <BookFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-                    <button onClick={() => setShowBookEdit(true)}>Add Book</button>
+                    <button className="btn-add-book"  onClick={() => setShowBookEdit(true)}>Add Book</button>
                     <BookList
                         books={books}
                         onSelectBookId={onSelectbookId}
@@ -74,7 +77,10 @@ export function BookIndex() {
                 />
             }
             {showBookEdit &&    
-                <BookEdit onAddBook={handleAddBook} />
+                <BookEdit 
+                    onAddBook={handleAddBook}
+                    onCancelNewBook={onCancelNewBook}
+                />
             }
         </section>
     )
