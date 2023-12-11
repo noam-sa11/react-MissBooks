@@ -78,12 +78,20 @@ function getDefaultFilter() {
 }
 
 function getNegBookId(bookId, diff) {
+    console.log('bookId:', bookId)
     return storageService.query(BOOK_KEY)
         .then(books => {
-            let nextBookIdx = books.findIndex(book => book.id === bookId) + diff
-            if (nextBookIdx === books.length) nextBookIdx = 0
-            if (nextBookIdx === -1) nextBookIdx = books.length - 1
-
+            let nextBookIdx
+            let bookIdx = books.findIndex(book => book.id === bookId)
+            if (bookIdx === 0 && diff === -1) {
+                nextBookIdx = books.length - 1
+            } else if (bookIdx === books.length - 1 && diff === 1) {
+                nextBookIdx = 0
+            } else {
+                nextBookIdx = bookIdx + diff
+            }
+            console.log('nextBookIdx:', nextBookIdx)
+            console.log('books:', books)
             return books[nextBookIdx].id
         })
 }
