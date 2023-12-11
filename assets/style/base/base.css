@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: asapReg, sans-serif;
 }
 
 html {
@@ -17,22 +18,17 @@ h4,
 h5,
 h6 {
   margin: .5em 0 .5em;
-  font-family: 'Edu VIC WA NT Beginner', cursive;
+  font-weight: 400;
+  font-family: asapBold, sans-serif;
 }
 
 p {
   margin: 0 0 1em;
-  font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
 a {
   text-decoration: none;
   color: unset;
-  font-family: 'Edu VIC WA NT Beginner', cursive;
-}
-
-label, button {
-  font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
 

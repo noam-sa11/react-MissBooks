@@ -1,4 +1,4 @@
-.book-edit {
+.book-edit form {
     display: grid;
     gap: 10px;
     position: absolute;
@@ -8,12 +8,12 @@
 
     padding: 30px;
 
-    font-family: 'Edu VIC WA NT Beginner', cursive;
     text-align: center;
     color: whitesmoke;
 
     background-color: rgb(124, 8, 8);
 }
+
 
 .book-edit input {
     padding: 10px 20px;

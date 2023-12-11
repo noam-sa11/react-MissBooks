@@ -11,4 +11,6 @@
   --gray2: rgb(155, 155, 155);
   --gray3: rgb(44, 44, 44);
 
-} 
+  --clrSuccess: rgb(130, 154, 123);
+  --clrFailure: rgb(212, 145, 145);
+}

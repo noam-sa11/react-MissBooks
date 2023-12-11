@@ -33,3 +33,8 @@
     text-decoration: underline;
     font-weight: 600;
 }
+
+.book-details .book-actions-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

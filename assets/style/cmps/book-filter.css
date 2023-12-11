@@ -10,5 +10,9 @@
 
 .book-filter form>* {
     margin-inline-end: 15px;
-    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+.book-filter .price-filter {
+    display: flex;
+    gap: 10px;
 }
