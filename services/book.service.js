@@ -10,7 +10,8 @@ export const bookService = {
     remove,
     save,
     getEmptyBook,
-    getDefaultFilter,
+    getDefaultFilter, 
+    getNegBookId,
 }
 
 function query(filterBy) {
@@ -71,14 +72,14 @@ function getDefaultFilter() {
     return { title: '', price: 0 }
 }
 
-// function getNextBookId(bookId) {
-//     return storageService.query(BOOK_KEY)
-//         .then(books => {
-//             let nextBookIdx = books.findIndex(book => book.id === bookId) + 1
-//             if (nextBookIdx === books.length) nextBookIdx = 0
-//             return books[nextBookIdx].id
-//         })
-// }
+function getNegBookId(bookId, diff) {
+    return storageService.query(BOOK_KEY)
+        .then(books => {
+            let nextBookIdx = books.findIndex(book => book.id === bookId) + diff
+            if (nextBookIdx === books.length) nextBookIdx = 0
+            return books[nextBookIdx].id
+        })
+}
 
 function _createBooks() {
     let books = utilService.loadFromStorage(BOOK_KEY)
