@@ -27,7 +27,7 @@ export function BookIndex() {
                 setBooks(prevBooks => {
                     return prevBooks.filter(book => book.id !== bookId)
                 })
-                showSuccessMsg(`Book successfully removed! ${bookId}`)
+                showSuccessMsg(`Book successfully removed!`)
             })
             .catch(err => {
                 showErrorMsg(`Error removing Book: ${bookId}`)
@@ -47,7 +47,7 @@ export function BookIndex() {
         <section className="book-index">
             <h1>Welcome to Book index!</h1>
             <BookFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-            <Link to="/book/edit">Add Book</Link>
+            <button className="btn-add-book"><Link to="/book/edit">Add Book</Link></button>
             <BookList books={books} onRemoveBook={onRemoveBook} />
         </section>
     )
