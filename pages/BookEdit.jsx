@@ -1,12 +1,28 @@
 import { bookService } from '../services/book.service.js'
-const { useState } = React
+const { useNavigate, useParams } = ReactRouterDOM
+const { useState, useEffect } = React
 
-export function BookEdit({ onAddBook, onCancelNewBook }) {
+
+// export function BookEdit() {
+export function BookEdit({ onAddBook, onCancelbookToEdit }) {
     const emptyBook = bookService.getEmptyBook()
-    const [newBook, setNewBook] = useState(emptyBook)
+    const [bookToEdit, setBookToEdit] = useState(emptyBook)
+    const navigate = useNavigate()
+    const params = useParams()
 
+    useEffect(() => {
+        if (params.bookId) {
+            loadBook()
+        }
+    }, [])
 
-    const handleInputChange = (event) => {
+    function loadBook() {
+        bookService.getEmptyBook(params.bookId)
+            .then(setBookToEdit)
+            .catch(error => console.error('error:', error))
+    }
+
+    function handleInputChange(event) {
         const field = event.target.name
         let { value } = event.target
 
@@ -24,7 +40,7 @@ export function BookEdit({ onAddBook, onCancelNewBook }) {
                 break;
         }
 
-        setNewBook((prevBook) => ({
+        setBookToEdit((prevBook) => ({
             ...prevBook, [field]:
                 (field === 'listPrice') ?
                     {
@@ -36,12 +52,12 @@ export function BookEdit({ onAddBook, onCancelNewBook }) {
         }))
     }
 
-    const handleAddBook = (event) => {
+    function handleAddBook(event) {
         event.preventDefault()
-        bookService.save(newBook)
+        bookService.save(bookToEdit)
             .then(() => {
-                onAddBook()
-                setNewBook(emptyBook)
+                navigate('/book')
+                setBookToEdit(emptyBook)
             })
             .catch((error) => console.error('Error adding book:', error))
     }
@@ -53,7 +69,7 @@ export function BookEdit({ onAddBook, onCancelNewBook }) {
                 type="text"
                 id="title"
                 name="title"
-                value={newBook.title}
+                value={bookToEdit.title}
                 onChange={handleInputChange}
                 required
             />
@@ -63,13 +79,14 @@ export function BookEdit({ onAddBook, onCancelNewBook }) {
                 type="number"
                 id="price"
                 name="listPrice"
-                value={newBook.listPrice.amount || ''}
+                value={bookToEdit.listPrice.amount || ''}
                 onChange={handleInputChange}
                 required
             />
 
             <button type="submit">Add Book</button>
-            <button className="btn-cancel" onClick={onCancelNewBook}>X</button>
+            <button className="btn-cancel" onClick={onCancelbookToEdit}>X</button>
+            <button className="btn-cancel" onClick={navigate('/book')}>X</button>
         </form>
     )
 }
