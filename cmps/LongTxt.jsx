@@ -11,9 +11,9 @@ export function LongTxt({ txt, length = 100 }) {
 
     return (
         <section className="long-txt">
-            <p>{displayText}</p>
+            <span>{displayText}</span>
             {txt.length > length && (
-                <button onClick={onToggleExpansion}>
+                <button className="btn-long-txt" onClick={onToggleExpansion}>
                     {isExpanded ? 'Read Less' : 'Read More'}
                 </button>
             )}

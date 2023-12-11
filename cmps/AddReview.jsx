@@ -47,7 +47,7 @@ export function AddReview({ bookId, onAddReview }) {
 
     return (
         <section className="add-review">
-            <h3>Add a Review</h3>
+            <h3>Add a Review:</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="fullname">Full Name:</label>
