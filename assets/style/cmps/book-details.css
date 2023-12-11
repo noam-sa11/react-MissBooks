@@ -1,10 +1,53 @@
 .book-details {
     background-color: var(--gray2);
     display: grid;
+    grid-template-columns: auto 1fr;
     gap: 10px;
+    column-gap: 20px;
     padding: 20px;
     margin: 20px;
 }
+
+.book-details .book-full-description {
+    display: grid;
+    gap: 6px;
+}
+
+.book-details .book-img {
+    max-width: 200px;
+}
+
+
+.book-details .book-title {
+    position: relative;
+}
+
+.book-details .btn-back {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+}
+
+.book-reviews form {
+    display: grid;
+    grid-column: 1;
+    margin-block-start: 10px;
+}
+
+.book-reviews form button {
+    justify-self: start;
+}
+
+.book-details form div {
+    display: grid;
+    justify-items: start;
+}
+
+.btn-long-txt {
+    font-size: 0.5em;
+    padding: 5px;
+}
+
 .book-details h1 {
     color: var(--clr1);
     font-size: 2em;
@@ -13,14 +56,13 @@
 .book-details h5 {
     color: var(--clr2);
 }
-.book-details img {
-    max-width: 200px;
-    display: block;
-    margin: auto;
-}
 
 .book-details div:first-of-type{
     position: relative;
+}
+
+.book-details ul {
+    padding-inline-start: 15px;
 }
 
 .book-details .book-sale{
@@ -37,4 +79,9 @@
 .book-details .book-actions-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+
+.book-details .btn-delete-review {
+    margin: .5rem 0;
+    font-size: 0.5rem;
 }

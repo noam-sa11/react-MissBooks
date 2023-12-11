@@ -1,7 +1,6 @@
 .book-filter {
     background-color: var(--clr2bg);
     padding: 10px;
-    margin-block-end: 15px;
 }
 
 .book-filter form {

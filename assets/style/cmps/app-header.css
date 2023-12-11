@@ -1,7 +1,8 @@
 .app-header {
+  grid-column: 1 / -1;
   background-color: var(--clr1);
   color: var(--gray1);
-  padding: 1em;
+  padding: 1em 0;
 }
 
 .app-header section:first-child {

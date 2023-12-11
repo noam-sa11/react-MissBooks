@@ -1,9 +1,12 @@
 .book-preview {
     text-align: center;
     padding: 0.3em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    width: 100%;
+}
+
+.book-preview h2 {
+    color: whitesmoke;
 }
 
 .book-preview h4 {

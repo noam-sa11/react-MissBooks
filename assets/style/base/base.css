@@ -3,9 +3,6 @@
   font-family: asapReg, sans-serif;
 }
 
-html {
-}
-
 body {
   margin: 0;
   color: var(--gray3);
@@ -17,7 +14,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: .5em 0 .5em;
+  margin: 0;
   font-weight: 400;
   font-family: asapBold, sans-serif;
 }
@@ -29,6 +26,11 @@ p {
 a {
   text-decoration: none;
   color: unset;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
 }
 
 

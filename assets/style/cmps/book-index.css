@@ -1,5 +1,11 @@
 .book-index {
     display: grid;
+    gap: 15px;
+}
+
+.book-index h1 {
+    margin-block-start: 15px;
+    text-align: center;
 }
 
 .book-index .btn-add-book {
