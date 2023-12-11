@@ -9,17 +9,15 @@ export const bookService = {
     get,
     remove,
     save,
+    addReview,
+    deleteReview,
+    getReviews,
     getEmptyBook,
-    getDefaultFilter, 
+    getDefaultFilter,
     getNegBookId,
 }
 
 function query(filterBy) {
-    // let books = storageService.loadFromStorage(BOOK_KEY)
-    // if (!books || !books.length) {
-    //     books = gBooks
-    //     _sa
-    // }
     return storageService.query(BOOK_KEY)
         .then(books => {
             if (filterBy.title) {
@@ -35,6 +33,13 @@ function query(filterBy) {
 
 function get(bookId) {
     return storageService.get(BOOK_KEY, bookId)
+}
+
+function getReviews(bookId) {
+    return get(bookId)
+        .then(book => {
+            return book.reviews || []
+        })
 }
 
 function remove(bookId) {
@@ -77,7 +82,34 @@ function getNegBookId(bookId, diff) {
         .then(books => {
             let nextBookIdx = books.findIndex(book => book.id === bookId) + diff
             if (nextBookIdx === books.length) nextBookIdx = 0
+            if (nextBookIdx === -1) nextBookIdx = books.length - 1
+
             return books[nextBookIdx].id
+        })
+}
+
+function addReview(bookId, review) {
+    return get(bookId)
+        .then(book => {
+            if (!book.reviews) {
+                book.reviews = []
+            }
+            book.reviews.push(review)
+            return save(book)
+        })
+}
+
+function deleteReview(bookId, currReviewId) {
+    return get(bookId)
+        .then(book => {
+            if (book.reviews) {
+                const reviewIndex = book.reviews.findIndex(review => review.id === currReviewId)
+                if (reviewIndex !== -1) {
+                    book.reviews.splice(reviewIndex, 1)
+                }
+                return save(book)
+            }
+            return Promise.reject('Review not found or book does not have reviews.');
         })
 }
 
@@ -529,3 +561,7 @@ function _createBooks() {
         utilService.saveToStorage(BOOK_KEY, books)
     }
 }
+
+// function _saveBooksToStorage() {
+//     storageService.save(KEY, gBooks)
+// }

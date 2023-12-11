@@ -1,5 +1,6 @@
 import { bookService } from "../services/book.service.js"
 import { LongTxt } from "../cmps/LongTxt.jsx"
+import { AddReview } from "../cmps/AddReview.jsx"
 
 const { useParams, useNavigate, Link } = ReactRouterDOM
 const { useState, useEffect } = React
@@ -122,13 +123,14 @@ const { useState, useEffect } = React
 // ROUTING
 export function BookDetails() {
 
-    const [book, setBook] = useState(null)
     const params = useParams()
-    // console.log('params:', params)
     const navigate = useNavigate()
+    const [book, setBook] = useState(null)
+    const [reviews, setReviews] = useState([])
 
     useEffect(() => {
         loadBook()
+        loadReviews()
     }, [params.bookId])
 
     function loadBook() {
@@ -137,6 +139,28 @@ export function BookDetails() {
             .catch(error => {
                 console.log('error:', error)
                 navigate('/')
+            })
+    }
+
+    function loadReviews() {
+        bookService.getReviews(params.bookId).then((reviews) => {
+            setReviews(reviews)
+        })
+    }
+
+    function onAddReview(bookId, review) {
+        bookService.addReview(bookId, review).then(() => {
+            loadReviews()
+        })
+    }
+
+    function onDeleteReview(reviewId) {
+        bookService.deleteReview(params.bookId, reviewId)
+            .then(() => {
+                loadReviews()
+            })
+            .catch(error => {
+                console.log('Error deleting review:', error)
             })
     }
 
@@ -206,40 +230,74 @@ export function BookDetails() {
     function onBack() {
         navigate('/book')
     }
-
+    console.log('reviews:', reviews)
     return (
         <section className="book-details">
-            <div>
+            <div className="book-img">
                 {isOnSale && <span className="book-sale">SALE</span>}
                 <img src={`../assets/img/${imgTitle}.jpg`} alt="" />
             </div>
-            <h2>
+
+            <h2 className="book-title">
                 book Title: {book.title}
                 <span className="book-lang">{` (${book.language})`}</span>
             </h2>
-            <h3>SubTitle: {book.subtitle}</h3>
-            <h4>Author: {book.authors[0]}</h4>
-            <h5>
+
+            <h3 className="book-subtitle">
+                SubTitle: {book.subtitle}
+            </h3>
+
+            <h4 className="book-author">
+                Author: {book.authors[0]}
+            </h4>
+
+            <h5 className="book-publish-year">
                 Publish Year: {book.publishedDate}
                 {bookType && <span className="book-type">{` (${bookType})`}</span>}
             </h5>
+
             <div className="book-categories">
                 Categories:
                 {book.categories.map((category) => (
                     <span key={`${book.id}-${category}`}>{` ${category} `}</span>
                 ))}
             </div>
-            <div>
+
+            <div className="book-description">
                 <LongTxt txt={book.description} />
             </div>
-            <h6>
+
+            <h6 className="book-pages">
                 Page Count: {book.pageCount}
                 <span className="reading-type">{` (${readingType})`}</span>
             </h6>
-            <h4>book Price: <span className={dynColor}>{currSymbol}{book.listPrice.amount}</span></h4>
-            <section className="actions-section">
+
+            <h4 className="book-price">
+                book Price:
+                <span className={dynColor}>{currSymbol}{book.listPrice.amount}</span>
+            </h4>
+
+            <section className="book-reviews">
+                <AddReview bookId={params.bookId} onAddReview={onAddReview} onDeleteReview={onDeleteReview}/>
+                <h3>Reviews:</h3>
+                {!reviews.length ?
+                    <div>No Reviews</div>
+                    :
+                    <ul>
+                        {reviews.map((review) => (
+                            <li key={review.id}>
+                                <p>{`"${review.fullname}" rated it ${review.rating}/5`}</p>
+                                <p>{`Read on: ${review.readAt}`}</p>
+                                <button onClick={() => onDeleteReview(review.id)}>Delete</button>
+                            </li>
+                        ))}
+                    </ul>
+                }
+            </section>
+
+            <section className="book-actions-section">
                 <button onClick={onBack}>Back</button>
-                <button onClick={onEditBook}>Edit</button>
+                {/* <button onClick={onEditBook}>Edit</button> */}
                 <button><Link to={`/book/${prevBookId}`}>Prev Book</Link></button>
                 <button><Link to={`/book/${nextBookId}`}>Next Book</Link></button>
             </section>
