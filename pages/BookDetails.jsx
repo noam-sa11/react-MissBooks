@@ -230,7 +230,7 @@ export function BookDetails() {
     function onBack() {
         navigate('/book')
     }
-    console.log('reviews:', reviews)
+    // console.log('reviews:', reviews)
     return (
         <section className="book-details">
             <div className="book-img">

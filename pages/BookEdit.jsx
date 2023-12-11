@@ -2,11 +2,8 @@ import { bookService } from '../services/book.service.js'
 const { useNavigate, useParams } = ReactRouterDOM
 const { useState, useEffect } = React
 
-
-// export function BookEdit() {
-export function BookEdit({ onAddBook, onCancelbookToEdit }) {
-    const emptyBook = bookService.getEmptyBook()
-    const [bookToEdit, setBookToEdit] = useState(emptyBook)
+export function BookEdit() {
+    const [bookToEdit, setBookToEdit] = useState(bookService.getEmptyBook())
     const navigate = useNavigate()
     const params = useParams()
 
@@ -17,7 +14,7 @@ export function BookEdit({ onAddBook, onCancelbookToEdit }) {
     }, [])
 
     function loadBook() {
-        bookService.getEmptyBook(params.bookId)
+        bookService.get(params.bookId)
             .then(setBookToEdit)
             .catch(error => console.error('error:', error))
     }
@@ -56,37 +53,44 @@ export function BookEdit({ onAddBook, onCancelbookToEdit }) {
         event.preventDefault()
         bookService.save(bookToEdit)
             .then(() => {
-                navigate('/book')
-                setBookToEdit(emptyBook)
+                setBookToEdit(bookService.getEmptyBook())
             })
+            .then(navigate('/book'))
             .catch((error) => console.error('Error adding book:', error))
     }
 
+    function onCancelAddBook() {
+        navigate('/book')
+    }
+
     return (
-        <form className="book-edit" onSubmit={handleAddBook}>
-            <label htmlFor="title">Title:</label>
-            <input
-                type="text"
-                id="title"
-                name="title"
-                value={bookToEdit.title}
-                onChange={handleInputChange}
-                required
-            />
+        <section className="book-edit" >
+            <h1>Add Book</h1>
+            <form onSubmit={handleAddBook}>
+                <label htmlFor="title">Title:</label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={bookToEdit.title}
+                    onChange={handleInputChange}
+                    required
+                />
 
-            <label htmlFor="price">Price:</label>
-            <input
-                type="number"
-                id="price"
-                name="listPrice"
-                value={bookToEdit.listPrice.amount || ''}
-                onChange={handleInputChange}
-                required
-            />
+                <label htmlFor="price">Price:</label>
+                <input
+                    type="number"
+                    id="price"
+                    name="listPrice"
+                    value={bookToEdit.listPrice.amount || ''}
+                    onChange={handleInputChange}
+                    required
+                />
 
-            <button type="submit">Add Book</button>
-            <button className="btn-cancel" onClick={onCancelbookToEdit}>X</button>
-            <button className="btn-cancel" onClick={navigate('/book')}>X</button>
-        </form>
+                <button disabled={!bookToEdit.title || !bookToEdit.listPrice.amount} type="submit">Add Book</button>
+                <button className="btn-cancel" onClick={onCancelAddBook}>X</button>
+            </form>
+        </section>
+
     )
 }
