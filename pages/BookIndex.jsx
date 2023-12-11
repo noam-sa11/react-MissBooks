@@ -8,17 +8,14 @@ import { bookService } from "../services/book.service.js"
 const { useState, useEffect } = React
 
 export function BookIndex() {
-
     const [books, setBooks] = useState(null)
-    const [selectedBookId, setSelectedBookId] = useState(null)
     const [filterBy, setFilterBy] = useState(bookService.getDefaultFilter())
-    const [showBookEdit, setShowBookEdit] = useState(false)
+    const [selectedBookId, setSelectedBookId] = useState(null)
+    const [isEdit, setIsEdit] = useState(false)
+    const [showAddBook, setShowAddBook] = useState(false)
 
     useEffect(() => {
         loadBooks()
-        return () => {
-            // alert('Bye Bye')
-        }
     }, [filterBy])
 
     function loadBooks() {
@@ -48,11 +45,11 @@ export function BookIndex() {
 
     function handleAddBook() {
         loadBooks()
-        setShowBookEdit(false)
+        setShowAddBook(false)
     }
 
     function onCancelNewBook() {
-        setShowBookEdit(false)
+        setShowAddBook(false)
     }
 
     if (!books) return <div>Loading...</div>
@@ -62,21 +59,24 @@ export function BookIndex() {
                 <React.Fragment>
                     <h1>Welcome to Book index!</h1>
                     <BookFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-                    <button className="btn-add-book"  onClick={() => setShowBookEdit(true)}>Add Book</button>
-                    <BookList
+                    <button className="btn-add-book"  onClick={() => setShowAddBook(true)}>Add Book</button>
+                    {books.length &&
+                        <BookList
                         books={books}
                         onSelectBookId={onSelectbookId}
                         onRemoveBook={onRemoveBook}
-                    />
+                    />}
+                    {!books.length &&<div>No Books Found...</div>}
                 </React.Fragment>
             }
             {selectedBookId && 
                 <BookDetails 
                     bookId={selectedBookId}
                     onBack={() => setSelectedBookId(null)}  
+                    onEdit={() => setEditBook(true)}
                 />
             }
-            {showBookEdit &&    
+            {showAddBook &&    
                 <BookEdit 
                     onAddBook={handleAddBook}
                     onCancelNewBook={onCancelNewBook}

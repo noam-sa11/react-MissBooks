@@ -3,13 +3,14 @@ import { LongTxt } from "../cmps/LongTxt.jsx"
 
 const { useState, useEffect } = React
 
-export function BookDetails({ bookId, onBack }) {
+export function BookDetails({ bookId, onBack, onEdit }) {
     const [book, setBook] = useState(null)
 
     useEffect(() => {
         bookService.get(bookId)
             .then(book => setBook(book))
     }, [])
+
 
     if (!book) return <div>Loading...</div>
 
@@ -25,6 +26,10 @@ export function BookDetails({ bookId, onBack }) {
         imgTitle = lastPartOfUrl.replace(".jpg", "")
     } else {
         imgTitle = 'default'
+    }
+
+    function onEditBook() {
+        
     }
 
     return (
@@ -50,9 +55,8 @@ export function BookDetails({ bookId, onBack }) {
                 ))}
             </div>
             <div>
-                <LongTxt txt={book.description} length={100} />
+                <LongTxt txt={book.description} />
             </div>
-            {/* <p>{book.description}</p> */}
             <h6>
                 Page Count: {book.pageCount}
                 <span className="reading-type">{` (${readingType})`}</span>
@@ -61,6 +65,7 @@ export function BookDetails({ bookId, onBack }) {
 
 
             <button onClick={onBack}>Back</button>
+            <button onClick={onEditBook}>Edit</button>
         </section>
     )
 }

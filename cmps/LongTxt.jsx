@@ -3,20 +3,20 @@ const { useState } = React
 export function LongTxt({ txt, length = 100 }) {
     const [isExpanded, setIsExpanded] = useState(false)
 
-    const toggleExpansion = () => {
-        setIsExpanded(!isExpanded)
+    function onToggleExpansion () {
+        setIsExpanded(prev => !prev)
     }
 
-    const displayText = isExpanded ? txt : txt.slice(0, length)
+    const displayText = isExpanded ? txt + '.' : txt.slice(0, length) + '...'
 
     return (
-        <div className="long-txt">
+        <section className="long-txt">
             <p>{displayText}</p>
             {txt.length > length && (
-                <button onClick={toggleExpansion}>
+                <button onClick={onToggleExpansion}>
                     {isExpanded ? 'Read Less' : 'Read More'}
                 </button>
             )}
-        </div>
+        </section>
     )
 }

@@ -1,7 +1,6 @@
 
 const { useState, useEffect } = React
 
-
 export function BookFilter({ filterBy, onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
@@ -39,13 +38,19 @@ export function BookFilter({ filterBy, onSetFilter }) {
     }
 
     const { title, price } = filterByToEdit
+
     return (
         <section className="book-filter">
             <h2>Filter Our Books</h2>
             <form onSubmit={onSetFilterBy} >
                 <div className="title-filter">
                     <label htmlFor="title">Title: </label>
-                    <input value={title} onChange={handleChange} type="text" id="title" name="title" />
+                    <input 
+                        value={title} 
+                        onChange={handleChange} 
+                        type="text" 
+                        id="title" 
+                        name="title" />
                 </div>
 
                 <div className="price-filter">
